@@ -20,9 +20,9 @@ const MovieListing = () => {
   const apikey = '7fcae804';
   const url = 'http://www.omdbapi.com/';
 
-  const fetchData = async () => {
+  const fetchData = async (url: any) => {
     try {
-      const response = await axios.get(`${url}?apikey=${apikey}&s=${search}`);
+      const response = await axios.get(url);
       setData(response.data.Search || []); // Ensure the Search property exists; otherwise, default to an empty array
     } catch (error) {
       // Handle error
@@ -32,7 +32,13 @@ const MovieListing = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    const timerout = setTimeout(() => {
+      fetchData(`${url}?apikey=${apikey}&s=${search}`);
+      console.log('timeout', data)
+    }, 500);
+    return () => {
+      clearTimeout(timerout)
+    }
   }, [search]);
 
   const delay = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -41,17 +47,10 @@ const MovieListing = () => {
     if (inputValue.length === 0) {
       setSearch('Harry Potter');
     } else {
-      setLoading(true )
-      if (delayTimer) {
-        clearTimeout(delayTimer);
-      }
-      delayTimer = setTimeout(() => {
-        setSearch(inputValue)
-      }, 2000);
+      setLoading(true)
+      setSearch(inputValue)
     }
   };
-  console.log(data)
-
   return (
     <>
       <Stack direction={'row'} justifyContent={'center'} marginBottom={3}>

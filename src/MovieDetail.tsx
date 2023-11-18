@@ -34,7 +34,6 @@ const MovieDetail = () => {
 
     fetchData();
   }, [id]);
-  console.log(data)
   return (
     <>
       <Stack direction={'row'} justifyContent={'center'} sx={{
