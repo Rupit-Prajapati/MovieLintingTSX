@@ -34,7 +34,6 @@ const MovieListing = () => {
   useEffect(() => {
     const timerout = setTimeout(() => {
       fetchData(`${url}?apikey=${apikey}&s=${search}`);
-      console.log('timeout', data)
     }, 500);
     return () => {
       clearTimeout(timerout)
