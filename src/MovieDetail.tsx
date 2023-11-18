@@ -18,7 +18,7 @@ const MovieDetail = () => {
   const [data, setData] = useState<Movie | null>(null);
   const [loading, setLoading] = useState(true);
   const apikey = '7fcae804';
-  const url = 'http://www.omdbapi.com/';
+  const url = 'https://www.omdbapi.com/';
   const { id } = useParams()
   useEffect(() => {
     const fetchData = async () => {

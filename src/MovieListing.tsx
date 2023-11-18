@@ -18,7 +18,7 @@ const MovieListing = () => {
   let delayTimer: NodeJS.Timeout | null = null; // Declare delayTimer using 'let' instead of 'const'
 
   const apikey = '7fcae804';
-  const url = 'http://www.omdbapi.com/';
+  const url = 'https://www.omdbapi.com/';
 
   const fetchData = async (url: any) => {
     try {
